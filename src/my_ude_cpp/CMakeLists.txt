@@ -9,7 +9,6 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rclcpp_action REQUIRED)
-find_package(example_interfaces REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(ude_interface REQUIRED)
@@ -39,7 +38,7 @@ add_executable(navigation_server src/navigation_server.cpp)
 ament_target_dependencies(navigation_server rclcpp ude_interface rclcpp_action geometry_msgs)
 
 add_executable(navigation_client src/navigation_client.cpp)
-ament_target_dependencies(navigation_client rclcpp ude_interface rclcpp_action geometry_msgs example_interfaces)
+ament_target_dependencies(navigation_client rclcpp ude_interface rclcpp_action geometry_msgs std_msgs)
 
 # Install Targets
 install(TARGETS

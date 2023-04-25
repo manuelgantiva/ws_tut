@@ -1,6 +1,6 @@
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
-#include "example_interfaces/msg/empty.hpp"
+#include "std_msgs/msg/empty.hpp"
 
 #include "ude_interface/action/navigate.hpp"
 #include "geometry_msgs/msg/point.hpp"
@@ -18,7 +18,7 @@ class NavigationClientNode : public rclcpp::Node
 public:
     NavigationClientNode() : Node("navigation_client") 
     {
-        subscriber_ = this-> create_subscription<example_interfaces::msg::Empty>("cancel_navigate",1,
+        subscriber_ = this-> create_subscription<std_msgs::msg::Empty>("cancel_navigate",1,
                 std::bind(&NavigationClientNode::callback_cancel_goal, this, std::placeholders::_1));
         action_client_ =  rclcpp_action::create_client<Navigate>(this, "navigate");
         call_navigate_server(3.0, 5.0, 0.0);
@@ -26,7 +26,7 @@ public:
     }
 
 private:
-    void callback_cancel_goal(const example_interfaces::msg::Empty::SharedPtr msg)
+    void callback_cancel_goal(const std_msgs::msg::Empty::SharedPtr msg)
     {
         (void)msg;
         RCLCPP_INFO(this->get_logger(), "Canceling goal");
@@ -108,7 +108,7 @@ private:
     }
 
 
-    rclcpp::Subscription<example_interfaces::msg::Empty>::SharedPtr subscriber_;
+    rclcpp::Subscription<std_msgs::msg::Empty>::SharedPtr subscriber_;
     GoalHandle::SharedPtr goal_handle_;
     rclcpp_action::Client<Navigate>::SharedPtr action_client_;
     std::vector<std::thread> threads_;

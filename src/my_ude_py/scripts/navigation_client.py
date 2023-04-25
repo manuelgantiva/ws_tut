@@ -5,7 +5,7 @@ from rclpy.action import ActionClient
 from functools import partial
 
 from ude_interface.action import Navigate
-from example_interfaces.msg import Empty
+from std_msgs.msg import Empty
 
 
 class NavigationClientNode(Node): 
