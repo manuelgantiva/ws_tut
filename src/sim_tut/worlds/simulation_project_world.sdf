@@ -1,0 +1,39 @@
+<sdf version="1.7">
+	<world name="test_world">
+		<!-- <gravity>0 0 0.5</gravity> -->
+		<plugin
+			filename="gz-sim-physics-system"
+			name="gz::sim::systems::Physics">
+		</plugin>
+		<plugin
+			filename="gz-sim-sensors-system"
+			name="gz::sim::systems::Sensors">
+		<render_engine>ogre</render_engine>
+		</plugin>
+		<plugin
+			filename="gz-sim-user-commands-system"
+			name="gz::sim::systems::UserCommands">
+		</plugin>
+		<plugin
+			filename="gz-sim-scene-broadcaster-system"
+			name="gz::sim::systems::SceneBroadcaster">
+		</plugin>
+
+		<include>
+			<uri>
+			https://fuel.gazebosim.org/1.0/OpenRobotics/models/Sun
+			</uri>
+		</include>
+
+		<include>
+			<uri>../models/ground_plane</uri>
+		</include>
+
+        <include>
+			<pose>0 0 0.4 0 0 0</pose>
+			<uri>../models/project_robot_model</uri>
+		</include>
+
+
+	</world>
+</sdf>
